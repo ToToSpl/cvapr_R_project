@@ -21,7 +21,7 @@ len_of_y
 # TODO: CHECK IF THIS IS CORRECT! (chapter 6)
 
 # point D
-plot(x, y, main="Relation between Y and X", xlab="X", ylab="Y") 
+plot(x, y, main="Relation between Y and X", xlab="X", ylab="Y", col="red") 
 
 
 lin_reg_res <- lsfit(x, y)
@@ -31,3 +31,11 @@ beta_prim_1 <- lin_reg_res$coefficients[[2]]
 # beta0: -1.00942315347694
 # beta1: 0.499734903457018
 
+# point F
+# Add line
+line_x <- seq(-2.5, 2.5, 0.1)
+line_y <- beta_prim_0 + beta_prim_1 * line_x
+lines(line_x, line_y, pch = 18, col = "blue", type = "l")
+
+legend("topleft", legend=c("Data", "regretion line"),
+       col=c("red", "blue"), lwd=2, lty=1, text.width = 1)
