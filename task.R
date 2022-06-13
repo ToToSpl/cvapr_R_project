@@ -18,9 +18,16 @@ len_of_y
 # what are beta coeffs?
 # beta0 is -1.0
 # beta1 is 0.5
-# TODO: CHECK IF THIS IS CORRECT!
+# TODO: CHECK IF THIS IS CORRECT! (chapter 6)
 
 # point D
 plot(x, y, main="Relation between Y and X", xlab="X", ylab="Y") 
 
+
+lin_reg_res <- lsfit(x, y)
+beta_prim_0 <- lin_reg_res$coefficients[[1]]
+beta_prim_1 <- lin_reg_res$coefficients[[2]]
+
+# beta0: -1.00942315347694
+# beta1: 0.499734903457018
 
