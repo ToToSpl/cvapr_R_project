@@ -11,3 +11,16 @@ eps <- rnorm(100, 0, 0.25)
 # point C
 y <- -1.0 + 0.5 * x + eps
 
+# vector y should have lenght 100, we can check it here:
+len_of_y <- length(y)
+len_of_y
+
+# what are beta coeffs?
+# beta0 is -1.0
+# beta1 is 0.5
+# TODO: CHECK IF THIS IS CORRECT!
+
+# point D
+plot(x, y, main="Relation between Y and X", xlab="X", ylab="Y") 
+
+
