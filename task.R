@@ -64,3 +64,29 @@ lines(line_x_H, line_y_H, pch = 18, col = "blue", type = "l")
 
 legend("topleft", legend=c("data", "regression line"),
        col=c("red", "blue"), lwd=2, lty=1, text.width = 1)
+
+
+# point I
+x_I <- rnorm(100, 0, 1)
+eps_I <- rnorm(100, 0, 0.5)
+y_I <- -1.0 + 0.5 * x_I + eps_I
+
+len_of_y_I <- length(y_I)
+len_of_y_I # Length of vector y_I is 100
+
+plot(x_I, y_I, main="Y X relation for variance = 0.5", xlab="X", ylab="Y", col="red") 
+
+lin_reg_res_I <- lsfit(x_I, y_I)
+beta_prim_0_I <- lin_reg_res_I$coefficients[[1]]
+beta_prim_1_I <- lin_reg_res_I$coefficients[[2]]
+
+#beta_prim_0_I: -1.0237262120960126666
+#beta_prim_1_I: 0.46252555953770113639
+
+line_x_I <- seq(-2.5, 2.5, 0.2)
+line_y_I <- beta_prim_0_I + beta_prim_1_I * line_x_I
+lines(line_x_I, line_y_I, pch = 18, col = "blue", type = "l")
+
+legend("topleft", legend=c("data", "regression line"),
+       col=c("red", "blue"), lwd=2, lty=1, text.width = 1)
+
