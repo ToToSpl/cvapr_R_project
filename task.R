@@ -39,3 +39,10 @@ lines(line_x, line_y, pch = 18, col = "blue", type = "l")
 
 legend("topleft", legend=c("Data", "regretion line"),
        col=c("red", "blue"), lwd=2, lty=1, text.width = 1)
+
+# point G
+poly_reg_res<- lm(y ~ x + I(x^2))
+beta_prim_0_poly <- poly_reg_res$coefficients[[1]]
+beta_prim_1_poly <- poly_reg_res$coefficients[[2]]
+# beta0: -0.98582124777092983159
+# beta1: 0.50429021861348155564
