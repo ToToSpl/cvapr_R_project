@@ -1,6 +1,6 @@
 # setting correct seed
 set.seed(1)
-
+par(mfrow=c(2,2))
 
 # point A
 x <- rnorm(100, 0, 1)
@@ -37,5 +37,30 @@ line_x <- seq(-2.5, 2.5, 0.1)
 line_y <- beta_prim_0 + beta_prim_1 * line_x
 lines(line_x, line_y, pch = 18, col = "blue", type = "l")
 
-legend("topleft", legend=c("Data", "regretion line"),
+legend("topleft", legend=c("data", "regression line"),
+       col=c("red", "blue"), lwd=2, lty=1, text.width = 1)
+
+
+# point H
+x_H <- rnorm(100, 0, 1)
+eps_H <- rnorm(100, 0, 0.1)
+y_H <- -1.0 + 0.5 * x_H + eps_H
+
+len_of_y_H <- length(y_H)
+len_of_y_H # Length of vector y_H is 100
+
+plot(x_H, y_H, main="Y X relation for variance = 0.1", xlab="X", ylab="Y", col="red") 
+
+lin_reg_res_H <- lsfit(x_H, y_H)
+beta_prim_0_H <- lin_reg_res_H$coefficients[[1]]
+beta_prim_1_H <- lin_reg_res_H$coefficients[[2]]
+
+#beta_prim_0_H: -1.0047452424192024889
+#beta_prim_1_H: 0.49250511190754014956
+
+line_x_H <- seq(-2.5, 2.5, 0.2)
+line_y_H <- beta_prim_0_H + beta_prim_1_H * line_x_H
+lines(line_x_H, line_y_H, pch = 18, col = "blue", type = "l")
+
+legend("topleft", legend=c("data", "regression line"),
        col=c("red", "blue"), lwd=2, lty=1, text.width = 1)
