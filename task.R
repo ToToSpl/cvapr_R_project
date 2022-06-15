@@ -21,7 +21,7 @@ len_of_y
 # TODO: CHECK IF THIS IS CORRECT! (chapter 6)
 
 # point D
-plot(x, y, main="Relation between Y and X", xlab="X", ylab="Y", col="red") 
+plot(x, y, main = "Relation between Y and X", xlab = "X", ylab = "Y", col = "red")
 
 
 lin_reg_res <- lsfit(x, y)
@@ -37,12 +37,24 @@ line_x <- seq(-2.5, 2.5, 0.1)
 line_y <- beta_prim_0 + beta_prim_1 * line_x
 lines(line_x, line_y, pch = 18, col = "blue", type = "l")
 
-legend("topleft", legend=c("Data", "regretion line"),
-       col=c("red", "blue"), lwd=2, lty=1, text.width = 1)
+# legend("topleft",
+#        legend = c("Data", "regretion line"),
+#        col = c("red", "blue"), lwd = 2, lty = 1, text.width = 1
+# )
 
 # point G
-poly_reg_res<- lm(y ~ x + I(x^2))
+poly_reg_res <- lm(y ~ x + I(x^2))
 beta_prim_0_poly <- poly_reg_res$coefficients[[1]]
 beta_prim_1_poly <- poly_reg_res$coefficients[[2]]
+beta_prim_2_poly <- poly_reg_res$coefficients[[3]]
 # beta0: -0.98582124777092983159
 # beta1: 0.50429021861348155564
+# beta2: -0.02973
+
+# plot to compare linear regretion and quadratic
+line_y <- beta_prim_0_poly + (beta_prim_1_poly + beta_prim_2_poly * line_x) * line_x
+lines(line_x, line_y, pch = 18, col = "green", type = "l")
+legend("topleft",
+       legend = c("Data", "linear coeffs", "quadratic coeffs"),
+       col = c("red", "blue", "green"), lwd = 2, lty = 1, text.width = 1.5
+)
