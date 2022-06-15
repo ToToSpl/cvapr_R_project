@@ -23,7 +23,7 @@ len_of_y
 # point D
 plot(x, y, main="Y X relation for variance = 0.25", xlab="X", ylab="Y", col="red") 
 
-
+# point E
 lin_reg_res <- lsfit(x, y)
 beta_prim_0 <- lin_reg_res$coefficients[[1]]
 beta_prim_1 <- lin_reg_res$coefficients[[2]]
@@ -37,9 +37,31 @@ line_x <- seq(-2.5, 2.5, 0.1)
 line_y <- beta_prim_0 + beta_prim_1 * line_x
 lines(line_x, line_y, pch = 18, col = "blue", type = "l")
 
-legend("topleft", legend=c("data", "regression line"),
-       col=c("red", "blue"), lwd=2, lty=1, text.width = 1)
+legend("topleft",
+       legend = c("Data", "regretion line"),
+       col = c("red", "blue"), lwd = 2, lty = 1, text.width = 1.7, y.intersp=2
+)
 
+
+# point G
+plot(x, y, main="Y X relation with model x^2", xlab="X", ylab="Y", col="red") 
+lines(line_x, line_y, pch = 18, col = "blue", type = "l")
+
+poly_reg_res <- lm(y ~ x + I(x^2))
+beta_prim_0_poly <- poly_reg_res$coefficients[[1]]
+beta_prim_1_poly <- poly_reg_res$coefficients[[2]]
+beta_prim_2_poly <- poly_reg_res$coefficients[[3]]
+# beta0: -0.98582124777092983159
+# beta1: 0.50429021861348155564
+# beta2: -0.02973
+
+# plot to compare linear regretion and quadratic
+line_y <- beta_prim_0_poly + (beta_prim_1_poly + beta_prim_2_poly * line_x) * line_x
+lines(line_x, line_y, pch = 18, col = "green", type = "l")
+legend("topleft",
+       legend = c("Data", "linear coeffs", "model x^2"),
+       col = c("red", "blue", "green"), lwd = 2, lty = 1, text.width = 1.7, y.intersp=2
+)
 
 # point H
 x_H <- rnorm(100, 0, 1)
@@ -63,7 +85,7 @@ line_y_H <- beta_prim_0_H + beta_prim_1_H * line_x_H
 lines(line_x_H, line_y_H, pch = 18, col = "blue", type = "l")
 
 legend("topleft", legend=c("data", "regression line"),
-       col=c("red", "blue"), lwd=2, lty=1, text.width = 1)
+       col=c("red", "blue"), lwd=2, lty=1, text.width = 2.5, y.intersp=2)
 
 
 # point I
@@ -88,5 +110,4 @@ line_y_I <- beta_prim_0_I + beta_prim_1_I * line_x_I
 lines(line_x_I, line_y_I, pch = 18, col = "blue", type = "l")
 
 legend("topleft", legend=c("data", "regression line"),
-       col=c("red", "blue"), lwd=2, lty=1, text.width = 1)
-
+       col=c("red", "blue"), lwd=2, lty=1, text.width = 2.8, y.intersp=2)
