@@ -21,7 +21,7 @@ len_of_y
 # TODO: CHECK IF THIS IS CORRECT! (chapter 6)
 
 # point D
-plot(x, y, main="Relation between Y and X", xlab="X", ylab="Y", col="red") 
+plot(x, y, main="Y X relation for variance = 0.25", xlab="X", ylab="Y", col="red") 
 
 
 lin_reg_res <- lsfit(x, y)
