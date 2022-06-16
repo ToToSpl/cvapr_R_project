@@ -113,9 +113,10 @@ legend("topleft", legend=c("data", "regression line"),
        col=c("red", "blue"), lwd=2, lty=1, text.width = 2.8, y.intersp=2)
 
 # point J
+# default confidence level of 95%
 lm1 <- lm(y ~ x)
-confint(lm1)
-lm2 <- lm(y ~ x_H)
-confint(lm2)
-lm3 <- lm(y ~ x_I)
-confint(lm3)
+int1 <- confint(lm1)
+lm2 <- lm(y_H ~ x_H)
+int2 <- confint(lm2)
+lm3 <- lm(y_I ~ x_I)
+int3 <- confint(lm3)
