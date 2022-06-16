@@ -111,3 +111,11 @@ lines(line_x_I, line_y_I, pch = 18, col = "blue", type = "l")
 
 legend("topleft", legend=c("data", "regression line"),
        col=c("red", "blue"), lwd=2, lty=1, text.width = 2.8, y.intersp=2)
+
+# point J
+lm1 <- lm(y ~ x)
+confint(lm1)
+lm2 <- lm(y ~ x_H)
+confint(lm2)
+lm3 <- lm(y ~ x_I)
+confint(lm3)
